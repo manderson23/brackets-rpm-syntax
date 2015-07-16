@@ -20,7 +20,7 @@ CodeMirror.defineMode("rpm-spec", function() {
       if (ch == "#") { stream.skipToEnd(); return "comment"; }
 
       if (stream.sol()) {
-        if (stream.match(preamble)) { return "def"; }
+        if (stream.match(preamble)) { return "header"; }
         if (stream.match(section)) { return "atom"; }
       }
 
@@ -52,7 +52,7 @@ CodeMirror.defineMode("rpm-spec", function() {
           return "macro";
         }
       }
-      if (stream.match(/^%\{\??[\w \-]+\}/)) { return "macro"; } // Macros like '%{defined fedora}'
+      if (stream.match(/^%\{\??[\w \-\:]+\}/)) { return "def"; } // Macros like '%{defined fedora}'
 
       //TODO: Include bash script sub-parser (CodeMirror supports that)
       stream.next();
