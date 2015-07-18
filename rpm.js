@@ -32,13 +32,17 @@ CodeMirror.defineMode("rpm-spec", function() {
         state.controlFlow = true;
         return "keyword";
       }
+      
       if (state.controlFlow) {
         if (stream.match(operators)) { return "operator"; }
         if (stream.match(/^(\d+)/)) { return "number"; }
         if (stream.eol()) { state.controlFlow = false; }
       }
 
-      if (stream.match(arch)) { return "number"; }
+      if (stream.match(arch)) { 
+        if (stream.eol()) { state.controlFlow = false; } 
+        return "number";
+      }
 
       // Macros like '%make_install' or '%attr(0775,root,root)'
       if (stream.match(/^%[\w]+/)) {
