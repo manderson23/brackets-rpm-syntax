@@ -55,7 +55,7 @@ codeMirror.defineMode("rpm-spec", function() {
         if (stream.match(/^\d+/)) { return "number";}
         if (stream.match(/^\)/)) {
           state.macroParameters = false;
-          return "macro";
+          return "keyword";
         }
       }
       if (stream.match(/^%\{\??[\w \-\:]+\}/)) { return "def"; } // Macros like '%{defined fedora}'
