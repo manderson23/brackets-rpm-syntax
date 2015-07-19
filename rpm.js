@@ -1,4 +1,6 @@
-CodeMirror.defineMode("rpm-spec", function() {
+var codeMirror = brackets.getModule("thirdparty/CodeMirror2/lib/codemirror");
+
+codeMirror.defineMode("rpm-spec", function() {
   var arch = /^(i386|i586|i686|x86_64|ppc64|ppc|ia64|s390x|s390|sparc64|sparcv9|sparc|noarch|alphaev6|alpha|hppa|mipsel)/;
 
   var preamble = /^(Name|Version|Release|License|Summary|Url|URL|Group|Source|BuildArch|BuildRequires|BuildRoot|AutoReqProv|Provides|Requires(\(\w+\))?|Obsoletes|Conflicts|Recommends|Source\d*|Patch\d*|ExclusiveArch|NoSource|Supplements):/;
@@ -65,4 +67,4 @@ CodeMirror.defineMode("rpm-spec", function() {
   };
 });
 
-CodeMirror.defineMIME("text/x-rpm-spec", "rpm-spec");
+codeMirror.defineMIME("text/x-rpm-spec", "rpm-spec");
