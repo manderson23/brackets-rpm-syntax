@@ -3,7 +3,7 @@ var codeMirror = brackets.getModule("thirdparty/CodeMirror2/lib/codemirror");
 codeMirror.defineMode("rpm-spec", function() {
   var arch = /^(i386|i586|i686|x86_64|ppc64|ppc|ia64|s390x|s390|sparc64|sparcv9|sparc|noarch|alphaev6|alpha|hppa|mipsel)/;
 
-  var preamble = /^(Name|Version|Release|License|Summary|Url|URL|Group|Source|BuildArch|BuildRequires|BuildRoot|AutoReqProv|Provides|Requires(\(\w+\))?|Obsoletes|Conflicts|Recommends|Source\d*|Patch\d*|ExclusiveArch|NoSource|Supplements):/;
+  var preamble = /^(Name|Version|Release|License|Summary|Url|URL|Group|Source|BuildArch|BuildRequires|BuildRoot|AutoReqProv|Provides|Requires(\(\w+\))?|Obsoletes|Conflicts|Recommends|Source\d*|Patch\d*|ExclusiveArch|NoSource|Supplements|Vendor|Packager):/;
   var section = /^%(debug_package|package|description|prep|build|install|files|clean|changelog|preinstall|preun|postinstall|postun|pretrans|posttrans|pre|post|triggerin|triggerun|verifyscript|check|triggerpostun|triggerprein|trigger)/;
   var control_flow_complex = /^%(ifnarch|ifarch|if)/; // rpm control flow macros
   var control_flow_simple = /^%(else|endif)/; // rpm control flow macros
