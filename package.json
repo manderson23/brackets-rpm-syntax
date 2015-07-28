@@ -3,7 +3,7 @@
     "title": "RPM Spec Syntax Highlighting",
     "description": "Syntax highlighting for RPM spec files.",
     "homepage": "https://github.com/manderson23/brackets-rpm-syntax",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "keywords": [ "rpm", ".spec", "syntax", "highlighting" ],
     "author": "Mark Anderson",
     "license": "MIT",
