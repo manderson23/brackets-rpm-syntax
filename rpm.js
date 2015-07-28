@@ -38,9 +38,6 @@ codeMirror.defineMode("rpm-spec", function() {
       if (state.controlFlow) {
         if (stream.match(operators)) { return "operator"; }
         if (stream.match(/^(\d+)/)) { return "number"; }
-        
-        // TODO if in control flow we need to check eol for every return.
-        // Not always an operator or number
         if (stream.eol()) { state.controlFlow = false; }
       }
 
@@ -61,7 +58,10 @@ codeMirror.defineMode("rpm-spec", function() {
           return "keyword";
         }
       }
-      if (stream.match(/^%\{\??[\w \-\:\!]+\}/)) { return "def"; } // Macros like '%{defined fedora}'
+      if (stream.match(/^%\{\??[\w \-\:\!]+\}/)) { 
+        if (stream.eol()) { state.controlFlow = false; } 
+        return "def"; 
+      } // Macros like '%{defined fedora}'
 
       //TODO: Include bash script sub-parser (CodeMirror supports that)
       stream.next();
